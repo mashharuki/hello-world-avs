@@ -38,6 +38,8 @@ contract HelloWorldDeployer is Script, Test {
     HelloWorldDeploymentLib.DeploymentConfigData helloWorldConfig;
     Quorum internal quorum;
     ERC20Mock token;
+
+
     function setUp() public virtual {
         deployer = vm.rememberKey(vm.envUint("PRIVATE_KEY"));
         vm.label(deployer, "Deployer");
@@ -72,6 +74,7 @@ contract HelloWorldDeployer is Script, Test {
         helloWorldDeployment.token = address(token);
 
         vm.stopBroadcast();
+        // デプロイされたコントラクトを検証する。
         verifyDeployment();
         HelloWorldDeploymentLib.writeDeploymentJson(helloWorldDeployment);
     }

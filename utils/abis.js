@@ -44,10 +44,11 @@ function extractAbi(contractName) {
     console.error(`Error extracting ABI for ${contractName}:`, error.message);
   }
 }
-
+// ビルドされた成果物があるかチェック
 checkArtifactsDirectory();
 
 for (const contractName of contractsToExtract) {
+  // ABIファイルを抽出する。
   extractAbi(contractName);
 }
 
